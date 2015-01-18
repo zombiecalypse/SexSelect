@@ -62,7 +62,7 @@ getChance = getRandomR (0, 1)
 withProb :: (RandomGen g) => Double -> a -> a -> Rand g a
 withProb p x y = do
   r <- getChance
-  return $ if r > p then x else y
+  return $ if r < p then x else y
 
 choice :: (RandomGen g) => [a] -> Rand g (Maybe a)
 choice [] = return Nothing
